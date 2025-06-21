@@ -1,0 +1,119 @@
+.appointments-page {
+  padding: 2rem;
+    background: linear-gradient(rgb(177, 196, 177), rgba(72, 134, 53, 0.907));
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+
+.appointments-page h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+  color: #098b09;
+}
+
+/* Form Styling */
+.appointment-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.appointment-form input {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fefefe;
+}
+
+.appointment-form input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0,123,255,0.1);
+}
+
+.appointment-form button {
+  padding: 0.75rem;
+  grid-column: span 2;
+  background-color:  #098b09;
+  width: fit-content;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.appointment-form button:hover {
+  background-color: #218838;
+}
+
+/* Appointment List */
+.appointment-list h3 {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  color: #218838;
+}
+
+.appointment-list {
+  overflow-x: auto;
+}
+
+.appointment-list table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.appointment-list th,
+.appointment-list td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.appointment-list th {
+  background-color: #e3f2fd;
+  color: #218838;
+  font-weight: 600;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #dc3545;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .appointment-form {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .appointment-form button {
+    grid-column: span 1;
+  }
+
+  .appointments-page {
+    padding: 1rem;
+  }
+}
