@@ -31,7 +31,7 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="navbar-container">
         <div className="clinic-logo-title">
-  <img src={Logo} alt="Smart Digital Clinic" />
+  <img src={logo} alt="Smart Digital Clinic" />
   <div>
     <span>Smart Digital Clinic</span>
     <div className="tagline">Transforming healthcare with technology</div>
