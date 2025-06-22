@@ -7,60 +7,66 @@
   padding: 1rem;
   font-family: 'Segoe UI', sans-serif;
 }
-.login-header{
+
+.login-header {
   display: flex;
   justify-content: center;
   font-style: italic;
   font-family: 'Times New Roman', Times, serif;
   color: #0fa302;
+  margin-bottom: 10px;
+  font-size: 1.8rem;
 }
 
 .auth-form {
   background-color: #b4c4b6;
   padding: 2rem;
-  border-radius: 10px;
+  border-radius: 12px;
   width: 100%;
   max-width: 420px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease;
 }
 
 .auth-form:hover {
-  transform: scale(1.02);
+  transform: scale(1.015);
 }
 
 .auth-form h2 {
   text-align: center;
   margin-bottom: 1.5rem;
   color: #02c50c;
+  font-size: 1.6rem;
 }
 
 .auth-form input {
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.75rem 1rem;
   margin-bottom: 1rem;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 1rem;
   transition: border 0.2s ease-in-out;
+  background: #fff;
+  box-sizing: border-box;
 }
 
 .auth-form input:focus {
   outline: none;
   border-color: #0fb600;
-  box-shadow: 0 0 0 2px rgba(0, 182, 6, 0.2);
+  box-shadow: 0 0 0 2px rgba(0, 182, 6, 0.25);
 }
 
 .auth-form button {
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.8rem;
   background-color: #18b600;
   color: white;
   font-weight: bold;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.05rem;
   transition: background-color 0.3s ease;
 }
 
@@ -96,18 +102,56 @@
   font-weight: bold;
 }
 
-/* Responsive tweaks */
+/* ✅ Password toggle */
+.password-input-wrapper {
+  position: relative;
+}
+
+.password-input-wrapper input {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.password-input-wrapper input:focus {
+  outline: none;
+  border-color: #0fb600;
+  box-shadow: 0 0 0 2px rgba(0, 182, 6, 0.25);
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #0c740c;
+
+}
+
+/* ✅ Responsive Design */
 @media (max-width: 480px) {
   .auth-form {
-    padding: 1.5rem;
+    padding: 1.4rem;
+    border-radius: 10px;
   }
 
   .auth-form h2 {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
   }
 
   .auth-form button,
   .auth-form input {
     font-size: 0.95rem;
+  }
+
+  .login-header {
+    font-size: 1.4rem;
   }
 }

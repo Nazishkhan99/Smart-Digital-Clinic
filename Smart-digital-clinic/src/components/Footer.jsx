@@ -9,9 +9,6 @@ export default function Footer() {
     alert(`Language changed to ${e.target.value.toUpperCase()}`);
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   return (
     <footer className="smart-footer">
@@ -45,11 +42,7 @@ export default function Footer() {
 
         {/* Newsletter & Language */}
         <div className="footer-section">
-          <h4>Subscribe</h4>
-          <form className="footer-newsletter" onSubmit={(e) => e.preventDefault()}>
-            <input type="email" placeholder="Enter your email" required />
-            <button type="submit">📩</button>
-          </form>
+          
           <div className="language-select">
             🌍 Language:
             <select value={language} onChange={handleLanguageChange}>
@@ -63,16 +56,10 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="footer-bottom">
-        <div className="footer-social">
-          <a href="#"><i className="fab fa-facebook-f" aria-label="Facebook"></i></a>
-          <a href="#"><i className="fab fa-twitter" aria-label="Twitter"></i></a>
-          <a href="#"><i className="fab fa-linkedin-in" aria-label="LinkedIn"></i></a>
-        </div>
-        <p>© {new Date().getFullYear()} Smart Digital Clinic. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Smart Digital Clinic | Developed by Nazish Anwar Khan</p>
+
       </div>
 
-      {/* Scroll to Top */}
-      <button className="scroll-top" onClick={scrollToTop} title="Back to Top">⬆️</button>
     </footer>
   );
 }

@@ -2,11 +2,69 @@
 .navbar {
   background-color: #ffffff;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  position: sticky;
+  position: relative;
   top: 0;
   z-index: 999;
   width: 100%;
+
 }
+/* logo */
+/* Example: Navbar.css or global styles */
+.clinic-logo-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  font-size: 33px;
+  color: #08d53f;
+}
+
+.clinic-logo-title img {
+  width: 135px;     /* Increased from 35-40px */
+  height: 135px;    /* Match height to keep aspect ratio */
+  object-fit: contain;
+  border-radius: 100px;
+    background-color: #01580d; /* Soft mint green */
+  padding: 10px;
+
+  
+
+}
+
+@keyframes pop-in {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.tagline {
+  font-size: 15px;
+  color: #e9f505;
+  margin-top: -4px;
+}
+@media (max-width: 600px) {
+  .clinic-logo-title img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .clinic-logo-title span {
+    font-size: 16px;
+  }
+}
+
+
+
+
+
+
+
+
+
 
 .navbar-container {
   display: flex;

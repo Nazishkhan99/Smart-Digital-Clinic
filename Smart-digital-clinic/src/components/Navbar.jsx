@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation , useNavigate} from "react-router-dom";
 import "./Navbar.css";
+import clinicLogo3 from '../assets/clinic-Logo3.png';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,8 +29,14 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <div className="navbar-logo">🩺 Smart Digital Clinic
-                          </div>
+        <div className="clinic-logo-title">
+  <img src={clinicLogo3} alt="Smart Digital Clinic" />
+  <div>
+    <span>Smart Digital Clinic</span>
+    <div className="tagline">Transforming healthcare with technology</div>
+  </div>
+</div>
+
         <button className="navbar-toggle" onClick={toggleMenu}>
           ☰
         </button>

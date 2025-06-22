@@ -14,6 +14,7 @@ export default function Auth() {
   const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleAuth = async (e) => {
@@ -71,32 +72,37 @@ export default function Auth() {
           onChange={(e) => setForm({ ...form, email: e.target.value })}
           required
         />
-        <input
-          type="password"
-          placeholder="Password"
-          value={form.password}
-          onChange={(e) => setForm({ ...form, password: e.target.value })}
-          required
-        />
+
+        <div className="password-input-wrapper">
+          <input
+            type={showPassword ? "text" : "password"}
+            placeholder="Password"
+            value={form.password}
+            onChange={(e) => setForm({ ...form, password: e.target.value })}
+            required
+          />
+          <span
+            className="toggle-password"
+            onClick={() => setShowPassword(!showPassword)}
+            title={showPassword ? "Hide Password" : "Show Password"}
+          >
+            {showPassword ? "🙈" : "👁️"}
+          </span>
+        </div>
 
         <button type="submit">{isLogin ? "Login" : "Sign Up"}</button>
 
         {isLogin && (
-          <p
-            onClick={handleForgotPassword}
-            style={{ marginTop: "10px", cursor: "pointer", color: "#c81a03" }}
-          >
+          <p onClick={handleForgotPassword}>
             Forgot Password?
           </p>
         )}
 
-        <p
-          onClick={() => {
-            setIsLogin(!isLogin);
-            setError("");
-            setMessage("");
-          }}
-        >
+        <p onClick={() => {
+          setIsLogin(!isLogin);
+          setError("");
+          setMessage("");
+        }}>
           {isLogin ? "Don’t have an account? Sign Up" : "Already have an account? Login"}
         </p>
       </form>

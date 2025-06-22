@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import LoadingScreen from "./components/LoadingScreen";
 
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
@@ -30,7 +31,8 @@ function AppContent() {
     return () => unsubscribe();
   }, []);
 
-  if (loading) return <div style={{ padding: 50 }}>Loading...</div>;
+  if (loading) return <LoadingScreen />;
+
 
   const isAuthPage = location.pathname === '/auth';
 
