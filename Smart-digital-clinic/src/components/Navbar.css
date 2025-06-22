@@ -1,14 +1,14 @@
 /* NAVBAR BASE */
-/* .navbar {
+.navbar {
   background-color: #fff;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   width: 100%;
   z-index: 999;
   position: relative;
 }
- */
+
 /* CONTAINER */
-/* /* .navbar-container {
+.navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -134,5 +134,5 @@
 
   .tagline {
     font-size: 11px;
-  } */
-} */
+  }
+}
