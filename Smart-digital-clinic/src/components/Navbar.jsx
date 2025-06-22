@@ -1,7 +1,7 @@
 // src/components/Navbar.jsx
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import "./navbar.css";
+import "./Navbar.css";
 import Logo from "../assets/clinic-Logo3.png";
 
 export default function Navbar() {
