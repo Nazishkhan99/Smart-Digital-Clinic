@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation , useNavigate} from "react-router-dom";
 import "./Navbar.css";
-import clinicLogo3 from '../assets/clinic-Logo3.png';
+import Logo from '../assets/clinic-Logo3.png';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +30,7 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="navbar-container">
         <div className="clinic-logo-title">
-  <img src={clinicLogo3} alt="Smart Digital Clinic" />
+  <img src={Logo} alt="Smart Digital Clinic" />
   <div>
     <span>Smart Digital Clinic</span>
     <div className="tagline">Transforming healthcare with technology</div>
