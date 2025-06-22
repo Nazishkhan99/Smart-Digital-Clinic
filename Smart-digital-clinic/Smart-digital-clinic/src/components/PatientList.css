@@ -1,0 +1,32 @@
+.patient-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+.patient-card {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+.actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.actions button {
+  padding: 0.4rem 0.6rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+.actions button:first-child {
+  background-color: #ffc107;
+  color: black;
+}
+.actions button:last-child {
+  background-color: #dc3545;
+  color: white;
+}

@@ -1,5 +1,12 @@
+// ✅ File: src/pages/Auth.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { auth } from "../firebase";
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  sendPasswordResetEmail
+} from "firebase/auth";
 import "./Auth.css";
 
 export default function Auth() {
@@ -9,66 +16,49 @@ export default function Auth() {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
-  const validateEmail = (email) =>
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-  const handleAuth = (e) => {
+  const handleAuth = async (e) => {
     e.preventDefault();
     setError("");
     setMessage("");
 
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-
-    if (!validateEmail(form.email)) {
-      setError("Please enter a valid email address.");
+    if (!form.email || !form.password) {
+      setError("Please fill in all fields.");
       return;
     }
 
-    if (isLogin) {
-      const user = users.find(
-        (u) => u.email === form.email && u.password === form.password
-      );
-      if (user) {
-        localStorage.setItem("authUser", JSON.stringify(user));
-        navigate("/");
+    try {
+      if (isLogin) {
+        await signInWithEmailAndPassword(auth, form.email, form.password);
       } else {
-        setError("Invalid email or password.");
+        await createUserWithEmailAndPassword(auth, form.email, form.password);
       }
-    } else {
-      const userExists = users.some((u) => u.email === form.email);
-      if (userExists) {
-        setError("User already exists.");
-      } else {
-        users.push(form);
-        localStorage.setItem("users", JSON.stringify(users));
-        localStorage.setItem("authUser", JSON.stringify(form));
-        navigate("/");
-      }
+      navigate("/");
+    } catch (err) {
+      setError("❌ " + err.message);
     }
   };
 
-  const handleForgotPassword = () => {
+  const handleForgotPassword = async () => {
     setError("");
     setMessage("");
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    const userExists = users.find((u) => u.email === form.email);
 
-    if (!validateEmail(form.email)) {
-      setError("Enter your registered email first.");
+    if (!form.email) {
+      setError("Please enter your email.");
       return;
     }
 
-    if (userExists) {
-      setMessage("📩 Password reset link has been sent to your email (simulated).");
-    } else {
-      setError("No user found with this email.");
+    try {
+      await sendPasswordResetEmail(auth, form.email);
+      setMessage("📩 Password reset link sent to your email.");
+    } catch (err) {
+      setError("❌ " + err.message);
     }
   };
 
   return (
     <div className="auth-container">
       <form className="auth-form" onSubmit={handleAuth}>
-        <h1 className="login-header">📋Smart Digital Clinic</h1>
+        <h1 className="login-header">📋 Smart Digital Clinic</h1>
         <h2>{isLogin ? "Login" : "Sign Up"}</h2>
 
         {error && <p className="auth-error">{error}</p>}
@@ -77,16 +67,16 @@ export default function Auth() {
         <input
           type="email"
           placeholder="Email"
-          required
           value={form.email}
           onChange={(e) => setForm({ ...form, email: e.target.value })}
+          required
         />
         <input
           type="password"
           placeholder="Password"
-          required
           value={form.password}
           onChange={(e) => setForm({ ...form, password: e.target.value })}
+          required
         />
 
         <button type="submit">{isLogin ? "Login" : "Sign Up"}</button>
@@ -100,10 +90,14 @@ export default function Auth() {
           </p>
         )}
 
-        <p onClick={() => { setIsLogin(!isLogin); setError(""); setMessage(""); }}>
-          {isLogin
-            ? "Don’t have an account? Sign Up"
-            : "Already have an account? Login"}
+        <p
+          onClick={() => {
+            setIsLogin(!isLogin);
+            setError("");
+            setMessage("");
+          }}
+        >
+          {isLogin ? "Don’t have an account? Sign Up" : "Already have an account? Login"}
         </p>
       </form>
     </div>

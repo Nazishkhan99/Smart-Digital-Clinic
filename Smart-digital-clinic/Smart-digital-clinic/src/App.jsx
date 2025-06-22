@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 
 import Home from './pages/Home';
@@ -6,42 +6,28 @@ import Dashboard from './pages/Dashboard';
 import Appointments from './pages/Appointments';
 import Patients from './pages/Patients';
 import Doctors from './pages/Doctors';
-import MedicalRecords from './pages/MedicalRecords';
+import Footer from "./components/Footer";
+import MedicalRecords from "./pages/MedicalRecords"; // Adjust path if needed
 
 import PatientForm from './components/PatientForm';
 import PatientList from './components/PatientList';
 import Navbar from './components/Navbar';
-import Footer from './components/Footer';
 import Auth from './pages/Auth';
 
-import { auth } from './firebase';
-import { onAuthStateChanged } from 'firebase/auth';
-
 function AppContent() {
-  const [authUser, setAuthUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const isAuthenticated = localStorage.getItem('authUser');
   const location = useLocation();
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setAuthUser(user);
-      setLoading(false);
-    });
-    return () => unsubscribe();
-  }, []);
-
-  if (loading) return <div style={{ padding: 50 }}>Loading...</div>;
-
-  const isAuthPage = location.pathname === '/auth';
+  const showNavbar = location.pathname !== '/auth';
 
   return (
     <>
-      {authUser && !isAuthPage && <Navbar />}
+      {isAuthenticated && showNavbar && <Navbar />}
 
       <Routes>
         <Route path="/auth" element={<Auth />} />
 
-        {authUser ? (
+        {isAuthenticated ? (
           <>
             <Route path="/" element={<Home />} />
             <Route path="/dashboard" element={<Dashboard />} />
@@ -51,15 +37,13 @@ function AppContent() {
             <Route path="/medical-records" element={<MedicalRecords />} />
             <Route path="/form" element={<PatientForm />} />
             <Route path="/list" element={<PatientList />} />
-            <Route path="*" element={<Navigate to="/" />} />
+         
+
           </>
         ) : (
           <Route path="*" element={<Navigate to="/auth" />} />
         )}
       </Routes>
-
-      {/* ✅ Hide footer on login/signup page */}
-      {!isAuthPage && <Footer />}
     </>
   );
 }
@@ -68,6 +52,7 @@ export default function App() {
   return (
     <Router>
       <AppContent />
+      <Footer />
     </Router>
   );
 }
