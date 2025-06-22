@@ -1,100 +1,50 @@
-/* Navbar Base */
+/* NAVBAR BASE */
 .navbar {
-  background-color: #ffffff;
+  background-color: #fff;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  position: relative;
-  top: 0;
-  z-index: 999;
   width: 100%;
-
+  z-index: 999;
+  position: relative;
 }
-/* logo */
-/* Example: Navbar.css or global styles */
+
+/* CONTAINER */
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 14px 20px;
+  max-width: 1500px;
+  margin: auto;
+  background: linear-gradient(to bottom right, #05110a, #037210, #b1c404);
+}
+
+/* LOGO AREA */
 .clinic-logo-title {
   display: flex;
   align-items: center;
   gap: 10px;
   font-weight: bold;
-  font-size: 33px;
   color: #08d53f;
+  font-size: 30px;
 }
 
 .clinic-logo-title img {
-  width: 135px;     /* Increased from 35-40px */
-  height: 135px;    /* Match height to keep aspect ratio */
+  width: 80px;
+  height: 80px;
   object-fit: contain;
-  border-radius: 100px;
-    background-color: #01580d; /* Soft mint green */
-  padding: 10px;
-
-  
-
+  border-radius: 50%;
+  background-color: #01580d;
+  padding: 8px;
 }
 
-@keyframes pop-in {
-  0% {
-    transform: scale(0.6);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
 .tagline {
-  font-size: 15px;
+  font-size: 14px;
   color: #e9f505;
   margin-top: -4px;
 }
-@media (max-width: 600px) {
-  .clinic-logo-title img {
-    width: 45px;
-    height: 45px;
-  }
 
-  .clinic-logo-title span {
-    font-size: 16px;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-.navbar-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 20px;
-  max-width: 1500px;
-  margin: auto;
-  flex-wrap: wrap; background: linear-gradient(to bottom right, #05110a, #037210,#b1c404);
-}
-
-/* Logo */
-.navbar-logo {
-  font-size: 32px;
-  font-weight: bold;
-  color: #f29006;
-  
-}
-
-/* Toggle */
-.navbar-toggle {
-  font-size: 24px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #0e0000;
-  display: none;
-}
-
-/* Links */
+/* NAV LINKS */
 .navbar-links {
   display: flex;
   align-items: center;
@@ -117,12 +67,21 @@
   color: #05ca12;
 }
 
-/* Logout */
+/* TOGGLE */
+.navbar-toggle {
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  display: none;
+}
+
+/* LOGOUT */
 .logout-btn {
- 
   border: none;
   background-color: #b60303;
-  color: white;
+  color: rgba(255, 255, 255, 0.972);
   padding: 8px 12px;
   border-radius: 5px;
   cursor: pointer;
@@ -134,43 +93,24 @@
   background-color: #9f0404;
 }
 
-/* Responsive */
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .navbar-toggle {
     display: block;
   }
 
-
-.navbar-links {
-  display: none; /* Will be displayed via JS or media queries */
-  flex-direction: column;
-  position: absolute;
-  top: 60px; /* Adjust based on your navbar height */
-  right: 10px;
-  background: rgba(162, 177, 162, 0.95); /* visible white background */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 15px;
-  border-radius: 30px;
-  width: fit-content;
-  z-index: 1000;
-}
-
-.navbar-links a {
-  text-decoration: none;
-  padding: 10px 15px;
-  color: #333333;
-  font-weight: 500;
-  text-align: right;
-}
-
-.navbar-links a:hover {
-  background-color: #f0f0f0;
-  border-radius: 20px;
-}
-
-
-
-
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 72px;
+    right: 5px;
+    background: rgba(85, 131, 99, 0.976);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    border-radius: 20px;
+    width: fit-content;
+  }
 
   .navbar-links.active {
     display: flex;
@@ -182,6 +122,17 @@
     padding: 10px 0;
   }
 
+  .clinic-logo-title {
+    font-size: 18px;
+  }
 
+  .clinic-logo-title img {
+    width: 45px;
+    height: 45px;
+    padding: 6px;
+  }
+
+  .tagline {
+    font-size: 11px;
+  }
 }
-
