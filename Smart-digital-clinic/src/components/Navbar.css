@@ -67,7 +67,7 @@
   color: #05ca12;
 }
 
-/* TOGGLE */
+/* TOGGLE BUTTON (mobile menu button) */
 .navbar-toggle {
   font-size: 24px;
   background: none;
@@ -77,7 +77,7 @@
   display: none;
 }
 
-/* LOGOUT */
+/* LOGOUT BUTTON */
 .logout-btn {
   border: none;
   background-color: #b60303;
@@ -93,7 +93,7 @@
   background-color: #9f0404;
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE DESIGN */
 @media (max-width: 768px) {
   .navbar-toggle {
     display: block;
